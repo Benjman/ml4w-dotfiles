@@ -239,4 +239,11 @@ if [ -f ~/.config/ml4w/settings/hypridle_suspend_timeout.sh ] ;then
     _replaceLineInFileCheckpoint "$search_str" "$replace_str" "SUSPEND TIMEOUT" "$HOME/.config/hypr/hypridle.conf"
     echo ":: hypridle_suspend_timeout restored"
 fi
+
+# Replace wallpaper_folder
+if [ -f ~/.config/ml4w/settings/wallpaper-folder.sh ] ;then
+    replace_value="$(cat ~/.config/ml4w/settings/wallpaper-folder.sh)"
+    _replaceLineInFile "folder = \~/wallpaper" "folder = $replace_value" "$HOME/.config/waypaper/config.ini"
+    _replaceLineInFile "wallpaper = \~/wallpaper/default.jpg" "wallpaper = $replace_value/default.jpg" "$HOME/.config/waypaper/config.ini"
+fi
 echo
